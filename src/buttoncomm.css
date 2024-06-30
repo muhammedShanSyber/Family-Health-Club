@@ -1,0 +1,201 @@
+.btn-common {
+  display: inline-block;
+  padding: 6px 18px;
+  font-size: 12px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #fff;
+  background-color: #2e8bff;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 5px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.23, -0.37, 0.24, 0.94);
+  margin-left: 10px;
+}
+
+.btn-common:hover {
+  background-color: #2e8bff;
+  border-color: #2e8bff;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2), 0 0 20px #2e8bff;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 600px) {
+  .btn-common {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+
+.flaireSelect option:disabled {
+  color: grey;
+}
+
+.flaireSelect option:enabled {
+  color: black;
+}
+
+/* Styles for input */
+.input-container {
+  position: relative;
+  margin: 50px;
+}
+
+.inputbox {
+  border: none;
+  width: 95%;
+  padding: 10px;
+  font-size: 18px;
+  background-color: transparent;
+  transition: all 0.3s;
+  margin-top: 9px;
+  border-radius: 5px;
+  filter: blur(0);
+
+}
+
+.inputbox:focus {
+  outline: none;
+  border-bottom: 2px solid #66afe9;
+  box-shadow: 0 1px 0 0 #66afe9;
+}
+
+/* Bulging effect */
+.inputbox::before,
+.inputbox::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s;
+  z-index: -1;
+}
+
+.inputbox::before {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.inputbox::after {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.inputbox:focus::before,
+.inputbox:focus::after {
+  transform: scale(1.1);
+}
+
+/* Shadow effect */
+.inputbox {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.inputbox:focus {
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Animation effect */
+@keyframes floatLabel {
+  from {
+    top: 10px;
+    font-size: 14px;
+  }
+
+  to {
+    top: -20px;
+    font-size: 12px;
+  }
+}
+
+.label-effect {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 14px;
+  color: #aaa;
+  transition: top 0.3s, font-size 0.3s;
+}
+
+.inputbox:focus+.label-effect,
+.inputbox:not(:placeholder-shown)+.label-effect {
+  top: -20px;
+  font-size: 12px;
+  color: #66afe9;
+  animation: floatLabel 0.3s ease-out;
+}
+
+.inputbox::placeholder {
+  color: gray;
+  opacity: 1;
+}
+
+.closenoti {
+  color: #aaa;
+  float: right;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.admin-logout {
+  display: inline-block;
+  padding: 6px 18px;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #fff;
+  /* background-color: #2e8bff; */
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  /* box-shadow: 0 5px 6px rgba(0, 0, 0, 0.1); */
+  transition: all 0.3s cubic-bezier(0.23, -0.37, 0.24, 0.94);
+  /* margin-left: 432px; */
+  position: absolute;
+  right: 10px;
+}
+
+.admin-logout:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  /* position: relative; */
+  justify-items: center;
+  background-color: #11ff9e;
+}
+
+.user-register,
+.user-login,
+.doc-portal-btn {
+  display: inline-block;
+  padding: 4px;
+  font-size: 15px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #fff;
+  /* background-color: #2e8bff; */
+  background-color: transparent;
+  border: 1px solid;
+  border-radius: 5px;
+  /* box-shadow: 0 5px 6px rgba(0, 0, 0, 0.1); */
+  transition: all 0.3s cubic-bezier(0.23, -0.37, 0.24, 0.94);
+  margin-left: 7px;
+  /* position: absolute; */
+}
+
+.user-register:hover,
+.user-login:hover,
+.doc-portal-btn:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  border-color: #11ff9e;
+  justify-items: center;
+  background-color: #11ff9e;
+}
+
+.flaireSelect option:disabled {
+  color: grey;
+}
+
+.flaireSelect option:enabled {
+  color: black;
+}

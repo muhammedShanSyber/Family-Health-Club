@@ -1,0 +1,39 @@
+.notification-container {
+    position: fixed;
+    top: 10px;
+    right: 20px;
+    z-index: 9999;
+    /* display: none; */
+}
+
+.notification {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* display: none; */
+}
+
+.notification ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.notification li {
+    margin-bottom: 10px;
+}
+
+.notification button {
+    margin-left: 10px;
+}
+
+.notification.show {
+    display: block;
+}
+
+.notification.close {
+    float: right;
+    cursor: pointer;
+    font-weight: bold;
+}

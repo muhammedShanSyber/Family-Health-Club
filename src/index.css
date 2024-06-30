@@ -1,0 +1,83 @@
+body {
+    margin: 0;
+    /* background-color: greenyellow; */
+}
+
+.App {
+    font-family: system-ui, sans-serif;;
+}
+
+.header {
+    background-color: #2EAF7D;
+    color: white;
+    padding: 10px;
+    align-items: center;
+    display: flow-root;
+}
+
+.header-buttons {
+    float: right;
+}
+
+.login-btn,
+.signup-btn {
+    margin-left: 10px;
+    padding: 8px 16px;
+    border: none;
+    
+    color: white;
+    cursor: pointer;
+}
+
+/* .main-content {
+    margin-top: 50px;
+} */
+
+.trending-block {
+    width: 80%;
+    height: auto;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    padding: 20px;
+}
+
+.top-doc-block {
+    width: 83%;
+    /* height: 110px; */
+    
+    margin-left: 131px;
+    border: 1px solid #ddd;
+    /* padding: 20px; */
+}
+
+.footer {
+    /* position: fixed; */
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+}
+
+.social-media-links {
+    display: flex;
+    justify-content: center;
+}
+
+.social-media-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.title {
+    /* margin-top: -10px; */
+    /* font-size: 35px; */
+    position: relative;
+    /* font-weight: bolder; */
+    /* padding: 0; */
+}
+
+li{
+    list-style-type: none;
+}

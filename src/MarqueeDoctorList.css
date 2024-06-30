@@ -1,0 +1,68 @@
+.doctor-card {
+    width: 181px;
+    display: inline-grid;
+    justify-content: center;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px #bfc1c3, -5px -5px 15px #ffffff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-content: center;
+    height: 180px;
+    /* background-color: #f5ea95; */
+}
+
+.doctor-card:hover {
+    transform: translateY(-5px);
+}
+
+.doctor-info{
+    justify-content: center;
+    align-items: center;
+    display: ruby;
+}
+
+.profile-icon {
+    /* margin-left: 40px; */
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin-top: 10px;
+    font-size: 50px;
+}
+
+/* .doctor-info {
+    
+} */
+
+/* Styles for the popup */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.popup-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    text-align: left;
+    display: grid;
+}
+
+.close-btn {
+    /* background-color: transparent; */
+    cursor: pointer;
+}
+
+marquee{
+    overflow: hidden;
+}

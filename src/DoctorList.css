@@ -1,0 +1,27 @@
+.doclist-btn{
+    display: inline-block;
+  padding: 6px 18px;
+  font-size: 12px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #fff;
+  background-color: #2e8bff;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 5px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.23, -0.37, 0.24, 0.94);
+  margin-left: 85%;
+}
+.doclist-btn:hover {
+    background-color: #2e8bff;
+    border-color: #2e8bff;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2), 0 0 20px #2e8bff;
+  }
+  
+  /* Responsive styles */
+  @media screen and (max-width: 600px) {
+    .doclist-btn {
+      font-size: 14px;
+      padding: 8px 16px;
+    }
+  }

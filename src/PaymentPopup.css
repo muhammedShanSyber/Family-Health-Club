@@ -1,0 +1,124 @@
+
+/* Style for input fields */
+.input-field {
+    margin-bottom: 15px;
+  }
+  
+  /* Style for labels */
+  .label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  /* Style for input elements */
+  .input-element {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  /* Style for button */
+  .button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  /* Style for button hover */
+  .button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Style for modal */
+  .modal3 {
+    display: block;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Style for modal content */
+  .modal-content3 {
+    position: relative;
+    margin: 10% auto;
+    width: 80%;
+    max-width: 400px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  /* Style for close button */
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    color: #aaa;
+    cursor: pointer;
+  }
+  
+  /* Style for close button hover */
+  .close:hover {
+    color: #000;
+  }
+
+
+.main-content {
+    display: flex;
+}
+
+.modal2 {
+    display: block;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content2 {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close2 {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close2:hover,
+.close2:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.ticket-item {
+    border: 1px solid;
+    /* background-color: yellow; */
+    height: 30px;
+    border-radius: 6px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+}
+  
