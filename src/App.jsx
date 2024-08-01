@@ -14,7 +14,7 @@ import './admindashboard.css';
 import Map from './map.jsx'
 import RoomPage from './room/RoomPage.jsx';
 import Logo from './assets/Icon.jpeg';
-require('dotenv').config();
+// require('dotenv').config();
 // import { Elements } from '@stripe/react-stripe-js';
 // import { loadStripe } from '@stripe/stripe-js';
 

@@ -7,7 +7,7 @@ import Feed from './Feed';
 import AddFeedModal from './AddFeedModal';
 import './admindashboard.css';
 import './Feed.css'
-require('dotenv').config();
+// require('dotenv').config();
 
 function Admindashboard() {
     const navigate = useNavigate();
@@ -16,7 +16,7 @@ function Admindashboard() {
     const [showAddFeedModal, setShowAddFeedModal] = useState(false);
 
     useEffect(() => {
-        axios.get(`${process.env.SERVER_URL}/totalUsers`)
+        axios.get(`http://localhost:3002/totalUsers`)
             .then(response => {
                 setTotalUsers(response.data.totalUsers);
             })
@@ -24,7 +24,7 @@ function Admindashboard() {
                 console.error('Error fetching total users:', error);
             });
 
-        axios.get(`${process.env.SERVER_URL}/totalDoctors`)
+        axios.get(`http://localhost:3002/totalDoctors`)
             .then(response => {
                 setTotalDoctors(response.data.totalDoctors);
             })

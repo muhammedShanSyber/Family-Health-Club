@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './AddDoctorModal.css';
 import './buttoncomm.css'
-require('dotenv').config();
+// require('dotenv').config();
 
 function AddDoctorModal({ onSave, onCancel }) {
     const [name, setName] = useState('');

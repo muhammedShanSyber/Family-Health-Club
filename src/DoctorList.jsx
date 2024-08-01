@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import AddDoctorModal from './AddDoctorModal';
 import './DoctorList.css'
-require('dotenv').config();
+// require('dotenv').config();
 
 function DoctorList() {
     const [doctors, setDoctors] = useState([]);
@@ -15,7 +15,7 @@ function DoctorList() {
     const fetchDoctors = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.get(`${process.env.SERVER_URL}/doctors`, {
+            const response = await axios.get(`http://localhost:3002/doctors`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

@@ -2,7 +2,7 @@ import React, { useCallback, useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import './ViewAppointment.css';
 import axios from 'axios';
-require('dotenv').config();
+// require('dotenv').config();
 
 function ViewAppointment({ onClose, ticket, userId }) {
     const [userDetails, setUserDetails] = useState(null);

@@ -4,7 +4,7 @@ import AddUserModal from './AddUserModal';
 import './buttoncomm.css';
 import { IoPersonRemoveSharp } from "react-icons/io5";
 import './UserList.css'
-require('dotenv').config();
+// require('dotenv').config();
 
 function UserList() {
     const [users, setUsers] = useState([]);
@@ -17,7 +17,7 @@ function UserList() {
     const fetchUsers = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.get(`${process.env.SERVER_URL}/users`, {
+            const response = await axios.get(`http://localhost:3002/users`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

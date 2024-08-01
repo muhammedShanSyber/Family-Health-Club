@@ -8,7 +8,7 @@ import ViewAppointment from './ViewAppointment';
 import ResolveTicketPopup from './ResolveTicketPopup';
 import PaymentUPIpopup from './PaymentUPIpopup';
 import './noti.css';
-require('dotenv').config();
+// require('dotenv').config();
 
 function Docdashboard() {
   const location = useLocation();
@@ -29,7 +29,7 @@ function Docdashboard() {
 
   const handleLogout = async () => {
     try {
-      const response = await axios.post(`${process.env.SERVER_URL}/logout`);
+      const response = await axios.post(`http://localhost:3002/logout`);
       console.log('Logout response:', response); // Log the response object
 
       localStorage.removeItem('token');

@@ -5,7 +5,7 @@ import './buttoncomm.css'
 import { FaRegEdit } from "react-icons/fa";
 import './admindashboard.css';
 import './Feed.css';
-require('dotenv').config();
+// require('dotenv').config();
 
 function Feed({ isAdminDashboard }) {
   const [feedItems, setFeedItems] = useState([]);
@@ -17,7 +17,7 @@ function Feed({ isAdminDashboard }) {
 
   const fetchFeed = async () => {
     try {
-      const response = await axios.get(`${process.env.SERVER_URL}/feed`);
+      const response = await axios.get(`http://localhost:3002/feed`);
 
       console.log('Feed items:', response.data.feedItems);
       setFeedItems(response.data.feedItems);

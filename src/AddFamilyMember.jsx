@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './AddFamilyMember.css'
-require('dotenv').config();
+// require('dotenv').config();
 
 function AddFamilyMember({ userId, onClose }) {
     const [name, setName] = useState('');
@@ -14,7 +14,7 @@ function AddFamilyMember({ userId, onClose }) {
     const handleSaveFamilyMember = async () => {
         try {
             console.log(userId)
-            const response = await axios.post(`${process.env.SERVER_URL}/fmembers`, {
+            const response = await axios.post(`http://localhost:3002/fmembers`, {
                 userId,
                 name,
                 age,

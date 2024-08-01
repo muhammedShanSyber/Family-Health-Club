@@ -16,7 +16,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import PaymentPopup from './PaymentPopup';
 import './noti.css'
 import './buttoncomm.css'
-require('dotenv').config();
+// require('dotenv').config();
 
 
 function Userdashboard() {
@@ -145,7 +145,7 @@ function Userdashboard() {
   }
   const handleLogout = async () => {
     try {
-      const response = await axios.post(`${process.env.SERVER_URL}/logout`);
+      const response = await axios.post(`http://localhost:3002/logout`);
       console.log('Logout response:', response); // Log the response object
 
       localStorage.removeItem('token');

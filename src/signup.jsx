@@ -3,7 +3,7 @@ import backgroundImage from './assets/loginbackground.jpg';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './buttoncomm.css'
-require('dotenv').config();
+// require('dotenv').config();
 
 function Signup() {
 
@@ -19,7 +19,7 @@ function Signup() {
 
     try {
       console.log(email, password, name, age, gender)
-      const response = await axios.post(`${process.env.SERVER_URL}/register`, {
+      const response = await axios.post(`http://localhost:3002/register`, {
         name: name,
         email: email,
         password: password,

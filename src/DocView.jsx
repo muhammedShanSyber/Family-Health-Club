@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-require('dotenv').config();
+// require('dotenv').config();
 
 function DocView({ userId, onClose }) {
     const [userDetails, setUser] = useState('');
@@ -9,7 +9,7 @@ function DocView({ userId, onClose }) {
         console.log(userId);
         const fetchUser = async () => {
             try {
-                const response = await axios.get(`${process.env.SERVER_URL}/doc`, {
+                const response = await axios.get(`http://localhost:3002/doc`, {
                     params: { _id: userId }
                 });
                 setUser(response.data.user);

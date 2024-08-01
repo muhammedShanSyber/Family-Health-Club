@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 // import './PaymentPopup.css'
-require('dotenv').config();
+// require('dotenv').config();
 
 function PaymentPopup({ onClose, onSuccess, onFailure }) {
     const stripe = useStripe();

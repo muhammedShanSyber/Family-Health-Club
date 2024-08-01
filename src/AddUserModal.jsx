@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './AddUserModal.css';
 import './buttoncomm.css'
-require('dotenv').config();
+// require('dotenv').config();
 
 function AddUserModal({ onSave, onCancel }) {
     const [name, setName] = useState('');

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import backgroundImage from './assets/loginbackground.jpg';
 import { useNavigate, Link } from "react-router-dom";
 import axios from 'axios';
-require('dotenv').config();
+// require('dotenv').config();
 
 function Admin() {
     const [username, setUsername] = useState('');
@@ -13,7 +13,7 @@ function Admin() {
         e.preventDefault();
 
         try {
-            const response = await axios.post(`${process.env.SERVER_URL}/adlogin`, {
+            const response = await axios.post(`http://localhost:3002/adlogin`, {
                 username: username,
                 password: password,
             });

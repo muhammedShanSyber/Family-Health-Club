@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './buttoncomm.css'
-require('dotenv').config();
+// require('dotenv').config();
 
 function EditFeedModal({ feedItem, onClose }) {
   const [editedHeading, setEditedHeading] = useState(feedItem.heading);
@@ -9,7 +9,7 @@ function EditFeedModal({ feedItem, onClose }) {
 
   const handleSave = async () => {
     try {
-      await axios.put(`${process.env.SERVER_URL}/feed/${feedItem._id}`, {
+      await axios.put(`http://localhost:3002/feed/${feedItem._id}`, {
         heading: editedHeading,
         description: editedDescription,
       });

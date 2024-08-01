@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './buttoncomm.css'
 import './AddFeedModal.css';
-require('dotenv').config();
+// require('dotenv').config();
 
 function AddFeedModal({ onClose }) {
     const [heading, setHeading] = useState('');
@@ -10,7 +10,7 @@ function AddFeedModal({ onClose }) {
 
     const handleSave = async () => {
         try {
-            const response = await axios.post(`${process.env.SERVER_URL}/feed`, {
+            const response = await axios.post(`http://localhost:3002/feed`, {
                 heading,
                 description,
                 time: new Date().toLocaleTimeString(),

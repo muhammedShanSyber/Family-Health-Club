@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './ResolveTicketPopup.css';
 import axios from 'axios';
-require('dotenv').config();
+// require('dotenv').config();
 
 function ResolveTicketPopup({ onClose, ticketId, userId, dId }) {
     const [closingRemarks, setClosingRemarks] = useState('');
@@ -39,7 +39,7 @@ function ResolveTicketPopup({ onClose, ticketId, userId, dId }) {
             try {
                 console.log("here is the doctor id : " + userId)
                 let yourId = userId;
-                await axios.delete(`${process.env.SERVER_URL}/tickets/${ticketId}`, {
+                await axios.delete(`http://localhost:3002/tickets/${ticketId}`, {
                     data: { yourId },
                     headers: {
                         'Content-Type': 'application/json'

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './NewAppointmentPopup.css';
-require('dotenv').config();
+// require('dotenv').config();
 
 function NewAppointmentPopup({ userId, onClose }) {
     const [familyMembers, setFamilyMembers] = useState([]);
@@ -17,7 +17,7 @@ function NewAppointmentPopup({ userId, onClose }) {
     const handleSaveAppointment = async () => {
         console.log(selectedDoctorId);
         try {
-            const response = await axios.post(`${process.env.SERVER_URL}/tickets`, {
+            const response = await axios.post(`http://localhost:3002/tickets`, {
                 userId,
                 member: selectedMember,
                 doctor: selectedDoctor,

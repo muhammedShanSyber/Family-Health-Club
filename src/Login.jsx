@@ -3,7 +3,7 @@ import backgroundImage from './assets/loginbackground.jpg';
 import { useNavigate, Link } from "react-router-dom";
 import axios from 'axios';
 import './buttoncomm.css'
-require('dotenv').config();
+// require('dotenv').config();
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -14,7 +14,7 @@ function Login() {
     e.preventDefault();
 
     try {
-      const response = await axios.post(`${process.env.SERVER_URL}/login`, {
+      const response = await axios.post('http://localhost:3002/login', {
         email: email,
         password: password,
       });

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import backgroundImage from './assets/loginbackground.jpg';
 import { useNavigate, Link } from "react-router-dom";
 import axios from 'axios';
-require('dotenv').config();
+// require('dotenv').config();
 import './buttoncomm.css'
 
 function Login() {
@@ -14,7 +14,7 @@ function Login() {
         e.preventDefault();
 
         try {
-            const response = await axios.post(`${process.env.SERVER_URL}/doclogin`, {
+            const response = await axios.post(`http://localhost:3002/doclogin`, {
                 email: email,
                 password: password,
             });

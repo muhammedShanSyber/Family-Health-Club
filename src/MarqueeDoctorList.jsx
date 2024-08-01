@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { CgProfile } from "react-icons/cg";
 import './MarqueeDoctorList.css';
-require('dotenv').config();
+// require('dotenv').config();
 
 function MarqueeDoctorList() {
     const [doctors, setDoctors] = useState([]);
@@ -15,7 +15,7 @@ function MarqueeDoctorList() {
 
     const fetchDoctors = async () => {
         try {
-            const response = await axios.get(`${process.env.SERVER_URL}/doctors`);
+            const response = await axios.get(`http://localhost:3002/doctors`);
             setDoctors(response.data);
             console.log(response.data)
         } catch (error) {
