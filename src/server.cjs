@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
+const jwtSecretKey = 'b5e9ed1a49a01f1a';
 const bcrypt = require('bcrypt');
 // const nodemailer = require('nodemailer');
 
@@ -89,10 +90,12 @@ app.use((req, res, next) => {
 });
 
 // Middleware for handling errors
-app.use((err, req, res) => {
+// eslint-disable-next-line no-unused-vars
+app.use((err, req, res, next) => { // Added 'next' parameter
     console.error(err.stack);
     res.status(500).send('Something broke!');
 });
+
 
 // const transporter = nodemailer.createTransport({
 //     host: 'smtp.google.com',
@@ -216,13 +219,13 @@ app.post('/login', async (req, res) => {
             return res.status(401).json({ error: 'Invalid credentials' });
         }
 
-        const passwordMatch = bcrypt.compare(password, user.password);
+        const passwordMatch = await bcrypt.compare(password, user.password);
 
         if (!passwordMatch) {
             return res.status(401).json({ error: 'Invalid credentials' });
         }
 
-        const token = jwt.sign({ userId: user._id, email: user.email, name: user.name }, process.env.JWT_SECRET_KEY);
+        const token = jwt.sign({ userId: user._id, email: user.email, name: user.name }, jwtSecretKey);
         res.json({ token, name: user.name, userId: user._id });
     } catch (error) {
         console.error('Error logging in:', error);
@@ -358,13 +361,28 @@ app.post('/logout', (req, res) => {
 
 // Middleware to verify JWT token
 function verifyToken(req, res, next) {
-    const token = req.headers.authorization;
+    // const token = req.headers.authorization;
+    const authHeader = req.headers.authorization;
 
-    if (!token) {
+    if (!authHeader) {
         return res.status(401).json({ error: 'Unauthorized' });
     }
 
-    jwt.verify(token, process.env.JWT_SECRET_KEY, (err, decoded) => {
+    //     if (!token) {
+    //         return res.status(401).json({ error: 'Unauthorized' });
+    //     }
+
+    //     jwt.verify(token, jwtSecretKey, (err, decoded) => {
+    //         if (err) {
+    //             console.error('Error verifying token:', err);
+    //             return res.status(401).json({ error: 'Unauthorized' });
+    //         }
+    //         req.user = decoded;
+    //         next();
+    //     });
+    // }
+    const token = authHeader.split(' ')[1]; // Extract the token
+    jwt.verify(token, jwtSecretKey, (err, decoded) => {
         if (err) {
             console.error('Error verifying token:', err);
             return res.status(401).json({ error: 'Unauthorized' });
@@ -469,7 +487,7 @@ app.delete('/doctors/:id', async (req, res) => {
 app.get('/doctors', async (req, res) => {
     try {
         // Fetch doctors from the database
-        const doctors = await Doc.find({}, { _id: 1, email: 1, name: 1, specialization: 1, age: 1, gender: 1, hospital: 1, paymentupi: 1 , image: 1});
+        const doctors = await Doc.find({}, { _id: 1, email: 1, name: 1, specialization: 1, age: 1, gender: 1, hospital: 1, paymentupi: 1, image: 1 });
         res.status(200).json(doctors);
     } catch (error) {
         console.error('Error fetching doctors:', error);

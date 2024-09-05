@@ -20,7 +20,7 @@ function AddDoctorModal({ onSave, onCancel }) {
 
 
     const handleSave = async () => {
-        if (!specialization || !name || !email || !password || !hospital || !age || !gender || !image) {
+        if (!specialization || !name || !email || !password || !hospital || !age || !gender ) {
             setShowWarning(true);
             return;
         }
