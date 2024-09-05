@@ -31,7 +31,7 @@ function UserList() {
 
     const handleAddUser = async (userData) => {
         try {
-            await axios.post(`${process.env.SERVER_URL}/addUser`, userData);
+            await axios.post(`http://localhost:3002/addUser`, userData);
             fetchUsers();
             setShowModal(false);
         } catch (error) {
@@ -47,7 +47,7 @@ function UserList() {
         const confirmDelete = window.confirm('Are you sure you want to delete this user?');
         if (confirmDelete) {
             try {
-                await axios.delete(`${process.env.SERVER_URL}/users/${userId}`);
+                await axios.delete(`http://localhost:3002/users/${userId}`);
                 fetchUsers();
             } catch (error) {
                 console.error('Error removing user:', error);

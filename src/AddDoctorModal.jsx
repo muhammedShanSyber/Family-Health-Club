@@ -1,8 +1,10 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
 import './AddDoctorModal.css';
 import './buttoncomm.css'
 // require('dotenv').config();
 
+// eslint-disable-next-line react/prop-types
 function AddDoctorModal({ onSave, onCancel }) {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -33,7 +35,7 @@ function AddDoctorModal({ onSave, onCancel }) {
         setDocupi('');
         setSpecialization('');
         setImage(null);
-        window.location.reload();
+        // window.location.reload();
     };
 
     const handleClose = () => {

@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React from 'react';
 import { Routes, Route, Link } from "react-router-dom";
 import Login from "./Login.jsx";
@@ -9,11 +10,12 @@ import Docdashboard from './Docdashboard.jsx';
 import MarqueeDoctorList from './MarqueeDoctorList.jsx';
 import Admin from './admin.jsx';
 import Feed from './Feed.jsx';
-import './buttoncomm.css'
-import './admindashboard.css';
+// import './buttoncomm.css'
+// import './admindashboard.css';
 import Map from './map.jsx'
 import RoomPage from './room/RoomPage.jsx';
 import Logo from './assets/Icon.jpeg';
+import './index.css'
 // require('dotenv').config();
 // import { Elements } from '@stripe/react-stripe-js';
 // import { loadStripe } from '@stripe/stripe-js';
@@ -34,10 +36,10 @@ function App() {
             <Route path="/Docdashboard" element={<Docdashboard />} />
             <Route path="/Admindashboard" element={<Admindashboard />} />
             <Route path="/admin" element={<Admin />} />
-            <Route path='/room/:roomId' element={<RoomPage/>}/>
-            <Route path='/room/:roomId/back' element={<Doctor_portal/>}/>
+            <Route path='/room/:roomId' element={<RoomPage />} />
+            <Route path='/room/:roomId/back' element={<Doctor_portal />} />
           </Routes>
-         
+
         </main>
       </div>
     </>
@@ -49,22 +51,31 @@ function Home() {
     <>
       <header className="header">
         <span className="title">
-        <img src={Logo} alt="Logo" width={50} height={50} />
-         <b style={{fontSize:'55px'}}> Family Health Hub</b>
-          </span>
+          <img src={Logo} alt="Logo" className='w-12 h-12' />
+          <b className='text-[55px]'> Family Health Hub</b>
+        </span>
         <div className="header-buttons">
-          <Link to="/doctor" className="doc-portal-btn">Doctors Portal</Link>
-          <Link to="/login" className="user-login">Login</Link>
-          <Link to="/signup" className="user-register">Sign Up</Link>
+          <Link to="/doctor" className='p-1 font-bold text-white bg-transparent border rounded transition-all duration-300 ease-[cubic-bezier(0.23,_-0.37,_0.24,_0.94)]
+ inline-block mr-[7px] hover:items-center hover:bg-[#11ff9e] hover:border-[#11ff9e] hover:transition-shadow hover:duration-300 hover:ease-in-out hover:shadow-[0_4px_8px_rgba(0,0,0,0.1)]
+
+'>Doctors Portal</Link>
+          <Link to="/login" className='p-1 font-bold text-white bg-transparent border rounded transition-all duration-300 ease-[cubic-bezier(0.23,_-0.37,_0.24,_0.94)]
+ inline-block mr-[7px] hover:items-center hover:bg-[#11ff9e] hover:border-[#11ff9e] hover:transition-shadow hover:duration-300 hover:ease-in-out hover:shadow-[0_4px_8px_rgba(0,0,0,0.1)]
+
+'>Login</Link>
+          <Link to="/signup" className='p-1 font-bold text-white bg-transparent border rounded transition-all duration-300 ease-[cubic-bezier(0.23,_-0.37,_0.24,_0.94)]
+ inline-block mr-[7px] hover:items-center hover:bg-[#11ff9e] hover:border-[#11ff9e] hover:transition-shadow hover:duration-300 hover:ease-in-out hover:shadow-[0_4px_8px_rgba(0,0,0,0.1)]
+
+'>Sign Up</Link>
         </div>
       </header>
       <div >
 
-        <b style={{fontSize:"30px", marginLeft:"130px", marginBottom:'0'}}>Breaking News</b>
+        <b style={{ fontSize: "30px", marginLeft: "130px", marginBottom: '0' }}>Breaking News</b>
         <div className="trending-block">
           <Feed />
         </div>
-        <b style={{fontSize:"30px", marginLeft:"130px", marginBottom:'0'}}>Top Doctors</b>
+        <b style={{ fontSize: "30px", marginLeft: "130px", marginBottom: '0' }}>Top Doctors</b>
         <div className="top-doc-block">
           <MarqueeDoctorList />
         </div>
@@ -75,10 +86,10 @@ function Home() {
 
       <footer className="footer">
         <div className="social-media-links">
-          <a style={{marginLeft:"620px"}} href="#">Facebook</a>
+          <a className='ml-[620px]' href="#">Facebook</a>
           <a href="#">Twitter</a>
           <a href="#">Instagram</a>
-          <b style={{marginLeft:"360px"}}>contact no : YOUR CONTACT NUMBER</b> 
+          <b style={{ marginLeft: "360px" }}>Contact no : YOUR CONTACT NUMBER</b>
         </div>
       </footer>
     </>

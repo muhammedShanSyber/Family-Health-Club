@@ -1,8 +1,10 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
 import './AddUserModal.css';
 import './buttoncomm.css'
 // require('dotenv').config();
 
+// eslint-disable-next-line react/prop-types
 function AddUserModal({ onSave, onCancel }) {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');

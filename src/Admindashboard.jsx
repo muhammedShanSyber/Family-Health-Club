@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -39,7 +40,7 @@ function Admindashboard() {
 
     const handleAddFeedItem = async (newFeedItemData) => {
         try {
-            await axios.post(`${process.env.SERVER_URL}`, newFeedItemData);
+            await axios.post(`http://localhost:3002`, newFeedItemData);
             setShowAddFeedModal(false);
             window.location.reload();
         } catch (error) {
@@ -49,7 +50,7 @@ function Admindashboard() {
 
     const handleLogout = async () => {
         try {
-            const response = await axios.post(`${process.env.SERVER_URL}/logout`);
+            const response = await axios.post(`http://localhost:3002/logout`);
             console.log('Logout response:', response); // Log the response object
 
             localStorage.removeItem('token');
@@ -65,9 +66,13 @@ function Admindashboard() {
     return (
         <>
             <div className="admdash">
-                <div className='adminheader'>Admin<button onClick={handleLogout} className='admin-logout'>logout</button></div>
-                <div className='common-box box'>Total Users: {totalUsers}</div>
-                <div className='common-box box'>Total Doctors: {totalDoctors}</div>
+                <div className='adminheader'>Admin<button onClick={handleLogout} className='admin-logout'>Logout</button></div>
+                <div className='w-60 bg-[#2e8bff] transition-shadow duration-300 ease-in-out
+ text-center inline-flex items-center justify-items-center justify-center text-white rounded h-8 ml-2.5 relative shadow-[0_4px_8px_rgba(0,0,0,0.1)]
+ hover:shadow-[0_8px_16px_rgba(0,0,0,0.2)] hover:animate-[cardAnimation_0.5s_ease]'>Total Users: {totalUsers}</div>
+                <div className='mt-1 w-60 bg-[#2e8bff] transition-shadow duration-300 ease-in-out
+ text-center inline-flex items-center justify-items-center justify-center text-white rounded h-8 ml-2.5 relative shadow-[0_4px_8px_rgba(0,0,0,0.1)]
+ hover:shadow-[0_8px_16px_rgba(0,0,0,0.2)] hover:animate-[cardAnimation_0.5s_ease]'>Total Doctors: {totalDoctors}</div>
                 <div style={{ marginTop: '30px' }}></div>
                 <DoctorList />
                 <div style={{ marginTop: '30px' }}></div>

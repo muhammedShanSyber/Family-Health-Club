@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -10,22 +11,22 @@ const bcrypt = require('bcrypt');
 const app = express();
 const PORT = 3002;
 
-mongoose.connect(process.env.DB_URL + '/thefamilyhub');
+mongoose.connect('mongodb://localhost:27017/thefamilyhub');
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
-const somedataSchema = new mongoose.Schema({
-    name: String,
-    email: String,
-    password: String,
-    age: Number,
-    gender: String,
-    fmembers: [{
-        name: String,
-        age: Number,
-        email: String
-    }]
-})
+// const somedataSchema = new mongoose.Schema({
+//     name: String,
+//     email: String,
+//     password: String,
+//     age: Number,
+//     gender: String,
+//     fmembers: [{
+//         name: String,
+//         age: Number,
+//         email: String
+//     }]
+// })
 const userSchema = new mongoose.Schema({
     name: String,
     email: String,
@@ -76,7 +77,7 @@ const User = mongoose.model('User', userSchema);
 const Admin = mongoose.model('Admin', adSchema);
 const Doc = mongoose.model('Doc', docSchema);
 const Ticket = mongoose.model('Ticket', ticketSchema);
-const Somedata = mongoose.model('Somedata', somedataSchema)
+// const Somedata = mongoose.model('Somedata', somedataSchema)
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -88,7 +89,7 @@ app.use((req, res, next) => {
 });
 
 // Middleware for handling errors
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
     console.error(err.stack);
     res.status(500).send('Something broke!');
 });
@@ -108,6 +109,7 @@ app.post('/sendemail', async (req, res) => {
     const { content } = req.body;
 
     try {
+        // eslint-disable-next-line no-undef
         await transporter.sendMail({
             from: 'demo88510@gmail.com',
             to: 'recipient@example.com',

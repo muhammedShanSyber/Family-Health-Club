@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import AddDoctorModal from './AddDoctorModal';
@@ -28,7 +29,7 @@ function DoctorList() {
 
     const handleAddDoctor = async (doctorData) => {
         try {
-            await axios.post(`${process.env.SERVER_URL}/addDoctor`, doctorData);
+            await axios.post(`http://localhost:3002/addDoctor`, doctorData);
             fetchDoctors();
             setShowModal(false);
         } catch (error) {
@@ -44,7 +45,7 @@ function DoctorList() {
         const confirmDelete = window.confirm('Are you sure you want to delete this doctor?');
         if (confirmDelete) {
             try {
-                await axios.delete(`${process.env.SERVER_URL}/doctors/${doctorId}`);
+                await axios.delete(`http://localhost:3002/doctors/${doctorId}`);
                 fetchDoctors();
             } catch (error) {
                 console.error('Error removing doctor:', error);
