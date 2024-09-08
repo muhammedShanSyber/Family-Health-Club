@@ -47,10 +47,10 @@ function Userdashboard() {
       setNotifications(notification);
     }
   };
-  const triggervideoCall = (patientid) => {
+  // const triggervideoCall = (patientid) => {
 
 
-  }
+  // }
   const handleNotificationButtonClick = (patientid) => {
     console.log(patientid)
 
@@ -107,7 +107,7 @@ function Userdashboard() {
           throw new Error('User ID is missing');
         }
 
-        const response = await axios.get(`${process.env.SERVER_URL}/tickets`, {
+        const response = await axios.get(`http://localhost:3002/tickets`, {
           params: { userId: yourId } // Pass user ID as 'userId' in query parameter
         });
         setTickets(response.data);
@@ -123,7 +123,7 @@ function Userdashboard() {
     console.log(yourId);
     try {
 
-      await axios.delete(`${process.env.SERVER_URL}/tickets/${ticketId}`, {
+      await axios.delete(`http://localhost:3002/tickets/${ticketId}`, {
         data: { yourId },
         headers: {
           'Content-Type': 'application/json'

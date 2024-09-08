@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
 import backgroundImage from './assets/loginbackground.jpg';
 import { useNavigate, Link } from "react-router-dom";
@@ -21,6 +22,7 @@ function Login() {
             console.log(response.data);
             const docuserName = response.data.name;
             console.log(docuserName);
+            console.log(response.data.id)
             navigate('/Docdashboard', { state: { name: docuserName, id: response.data.id } });
         } catch (error) {
             console.error('Error logging in as doctor:', error.response.data);
@@ -31,7 +33,7 @@ function Login() {
         <>
             <div style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', }}>
                 <div style={{ width: '300px', padding: '20px', border: '1px solid #ccc', borderRadius: '5px' }}>
-                    <h2>Doctor's Portal</h2>
+                    <h2>Doctors Portal</h2>
                     <form onSubmit={handleSubmit}>
                         <div>
                             <input className='inputbox'

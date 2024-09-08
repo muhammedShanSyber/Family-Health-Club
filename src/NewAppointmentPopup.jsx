@@ -1,8 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+// eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './NewAppointmentPopup.css';
 // require('dotenv').config();
 
+// eslint-disable-next-line react/prop-types
 function NewAppointmentPopup({ userId, onClose }) {
     const [familyMembers, setFamilyMembers] = useState([]);
     const [doctorFields] = useState(['Neurologist', 'Dentist', 'Gynecologist', 'Pediatrician', 'ENT Specialist', 'General Medicine']);
@@ -40,10 +43,10 @@ function NewAppointmentPopup({ userId, onClose }) {
 
     const fetchFamilyMembers = async () => {
         try {
-            // console.log(userId)
+            console.log(userId)
             let newid = userId.toString()
             console.log(newid)
-            const response = await axios.get(`${process.env.SERVER_URL}/fmembers`,{
+            const response = await axios.get(`http://localhost:3002/fmembers`,{
                 params: { _id: newid }
             });
             console.log(response.data)
@@ -54,9 +57,9 @@ function NewAppointmentPopup({ userId, onClose }) {
     };
 
     useEffect(() => {
-        // console.log(selectedField);
+        console.log(selectedField);
         if (selectedField) {
-            axios.get(`${process.env.SERVER_URL}/fielddoctors?field=${selectedField}`)
+            axios.get(`http://localhost:3002/fielddoctors?field=${selectedField}`)
                 .then(response => {
                     console.log('Doctors response:', response.data); 
                     setDoctors(response.data);

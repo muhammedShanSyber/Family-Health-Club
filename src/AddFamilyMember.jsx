@@ -1,8 +1,10 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import axios from 'axios';
 import './AddFamilyMember.css'
 // require('dotenv').config();
 
+// eslint-disable-next-line react/prop-types
 function AddFamilyMember({ userId, onClose }) {
     const [name, setName] = useState('');
     const [age, setAge] = useState('');

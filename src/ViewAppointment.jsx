@@ -1,3 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import React, { useCallback, useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import './ViewAppointment.css';
@@ -48,7 +51,7 @@ function ViewAppointment({ onClose, ticket, userId }) {
         const fetchUserDetails = async () => {
             console.log(userId)
             try {
-                const response = await axios.get(`${process.env.SERVER_URL}/users`, {
+                const response = await axios.get(`http://localhost:3002/users`, {
                     params: { _id: userId }
                 });
                 setUserDetails(response.data.users);
@@ -60,7 +63,7 @@ function ViewAppointment({ onClose, ticket, userId }) {
         const fetchFamilyMembers = async () => {
             console.log(userId)
             try {
-                const response = await axios.get(`${process.env.SERVER_URL}/fmembers`, {
+                const response = await axios.get(`http://localhost:3002/fmembers`, {
                     params: { _id: userId }
                 });
                 console.log(response.data.fmembers)
