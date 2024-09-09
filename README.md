@@ -14,5 +14,9 @@ Make sure MongoDB Compass is connected to MongoDB
 
 ## Setting up the React Web Application
 
-Download or clone the Github project. Unzip move to the project directory (Family-Health-Club) or move to the project directory if you cloned it. 
+Download or clone the Github project. Unzip and move to the project directory (Family-Health-Club) or move to the project directory if you cloned it. 
+
 Open the terminal or Command Prompt and type : ```npm install ```
+
+OpenStreetMap is used for fetch near by hospital. 
+Socket.IO is used for establishing communication between patient and the doctor. 
