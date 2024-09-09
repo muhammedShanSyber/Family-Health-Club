@@ -22,17 +22,14 @@ Database and Collections will be created automatically once the web application 
 ## Setting up the Admin Account
 
 Launch MongoDB Compass and check the database named : ```thefamilyhub```
-and select the collection name called admins 
-add data : 
+and select the collection name called admins add data : 
 
 ```
- {
-  "_id": {
-    "$oid": "66aa95862035f345f5257684"
-  },
+{
   "username": "<your_admin_username>",
   "password": "<your_admin_password>"
 }
 ```
 
 Enter the username and password of the Admin account you want in <your_admin_username> and <your_admin_password>
+Restart the whole Web application. 
