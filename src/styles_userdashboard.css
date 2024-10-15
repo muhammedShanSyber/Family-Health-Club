@@ -63,10 +63,11 @@
 }
 
 #map{
-    width: 98%;
-    height: 440px;
+    top: 125px;
+    width: 95%;
+    height: 640px;
     position: relative;
     margin: 10px;
-    outline-style: groove;
-    z-index: 0;
+    /* outline-style: groove; */
+    /* z-index: 0; */
 }

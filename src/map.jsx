@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -62,7 +62,7 @@ function Map() {
     }, []);
     return (
         <>
-        <b style={{fontSize:"30px", marginLeft:"130px",marginBottom:'0'}}> Hospitals Near me</b>
+        {/* <b style={{fontSize:"30px", marginLeft:"130px",marginBottom:'0'}}> Hospitals Near me</b> */}
            
             <div id="map" />
         </>
