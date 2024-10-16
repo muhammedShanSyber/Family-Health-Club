@@ -95,25 +95,25 @@ function Home() {
       {/* </div> */}
 
       <div className=" w-full h-[4727px] bg-[#676b74] flex-col justify-start items-start gap-px inline-flex">
-        <div className=" w-full h-[1020px] relative">
-          {/* <img className="PersonPracticingYogaMeditationOutdoorsNature1 w-[1440px] h-[1020px] left-0 top-0 absolute" src="https://via.placeholder.com/1440x1020" /> */}
-          <div className=" w-full h-[90px] px-[43px] py-0 left-0 top-0 absolute border justify-around items-center gap-[94px] inline-flex">
+        <div className=" w-full h-[1020px] relative"> 
+          <img className=" w-full h-[1150px] bg-cover absolute" src="src/assets/person-practicing-yoga-meditation-outdoors-nature.jpg" />
+          <div className=" w-full h-[90px] px-[43px]  absolute  justify-between items-center gap-[94px] inline-flex">
             <div className=" h-[50.06px] relative">
               {/* <div className="FhhLogo w-[102.70px] h-[50.06px] left-0 top-0 absolute">
                 <div className="Rectangle2 w-[102.70px] h-[50.06px] left-0 top-0 absolute rounded-[9px] border-2 border-white" />
               </div> */}
-              <div className=" w-[332px] h-11 left-[113.35px] top-[3px] absolute text-white text-4xl font-medium   tracking-wide">Family Health Hub</div>
+              <span className=" w-fit h-11  top-[3px] text-white text-4xl font-bold   tracking-wide">FAMILY HEALTH HUB</span>
             </div>
             <div className=" w-fit h-[19px] relative">
-              <a href="#" className=' text-white text-base font-bold'>Services</a>
-              <a href="#" className='ml-10 text-white text-base font-bold'>News</a>
-              <a href="#" className='ml-10 text-white text-base font-bold'>Doctors</a>
-              <a href="#" className='ml-10 text-white text-base font-bold'>Contact</a>
-              <a href="#" onClick={docLogin} className='ml-10 text-white text-base font-bold'>Doctor Portal</a>
+              <a href="#" className=' text-white text-base font-bold'>SERVICES</a>
+              <a href="#" className='ml-10 text-white text-base font-bold'>NEWS</a>
+              <a href="#" className='ml-10 text-white text-base font-bold'>DOCTORS</a>
+              <a href="#" className='ml-10 text-white text-base font-bold'>CONTACT</a>
+              <a href="#" onClick={docLogin} className='ml-10 text-white text-base font-bold'>DOCTOR PORTAL</a>
 
             </div>
-            <div className="  h-[50px] relative">
-              <button onClick={userLogin} className="Login w-[68px] h-6 left-0 top-[13px]  text-white text-xl font-semibold   tracking-wide">Login</button>
+            <div className=" justify-between h-[50px] relative">
+              <button onClick={userLogin} className="mr-5 w-[68px] h-6 left-0 top-[13px]  text-white text-xl font-semibold   tracking-wide">LOGIN</button>
               <button onClick={signUp} className="   tracking-wide text-white text-xl font-semibold  h-[50px] px-[34px] py-3.5  rounded-[10px] border-2 border-white justify-center items-center gap-2.5 inline-flex">REGISTER</button>
             </div>
           </div>

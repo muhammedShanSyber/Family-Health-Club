@@ -64,10 +64,10 @@
 
 #map{
     top: 125px;
-    width: 95%;
+    width: 92%;
     height: 640px;
     position: relative;
-    margin: 10px;
+    margin-left: 80px;
     /* outline-style: groove; */
     /* z-index: 0; */
 }
