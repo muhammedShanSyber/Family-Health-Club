@@ -1,25 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { MdCancel } from "react-icons/md";
-import './styles_userdashboard.css';
+// import { MdCancel } from "react-icons/md";
+// import './styles_userdashboard.css';
 import NewAppointmentPopup from './NewAppointmentPopup';
 import ProfileView from './ProfileView';
-import Map from './map.jsx'
+// import Map from './map.jsx'
 import AddFamilyMember from './AddFamilyMember';
 import { RiLogoutCircleRLine } from "react-icons/ri";
-import { CgProfile } from "react-icons/cg";
+// import { CgProfile } from "react-icons/cg";
 import { VscNewFile } from "react-icons/vsc";
 import { BsPersonFillAdd } from "react-icons/bs";
-import { Elements } from '@stripe/react-stripe-js';
-import { loadStripe } from '@stripe/stripe-js';
-import PaymentPopup from './PaymentPopup';
+// import { Elements } from '@stripe/react-stripe-js';
+// import { loadStripe } from '@stripe/stripe-js';
+// import PaymentPopup from './PaymentPopup';
 import './noti.css'
 import './buttoncomm.css'
 // require('dotenv').config();
 
-
-function Userdashboard() {
+function Userdashboard({ userId, onClose }) {
   const location = useLocation();
   const navigate = useNavigate();
   const name = location.state ? location.state.name : '';
@@ -27,77 +26,12 @@ function Userdashboard() {
   const [showPopup, setShowPopup] = useState(false);
   const [showPopupAF, setShowPopupAF] = useState(false);
   const [tickets, setTickets] = useState([]);
-  const [notifications, setNotifications] = useState([]);
-  const [showPaymentPopup, setShowPaymentPopup] = useState(false);
+  // const [notifications, setNotifications] = useState([]);
+  // const [showPaymentPopup, setShowPaymentPopup] = useState(false);
   const [viewProfile, setViewProfile] = useState(false);
-  const stripePromise = loadStripe('YOUR_STRIPE_KEY', { stripeAccount: 'YOUR_ACCOUNT_ID' });
-
-  useEffect(() => {
-    // Listen for changes to local storage
-    window.addEventListener('storage', handleStorageChange);
-    return () => {
-      window.removeEventListener('storage', handleStorageChange);
-    };
-  }, []);
-
-  const handleStorageChange = () => {
-    // Retrieve and update notifications from local storage
-    const notification = JSON.parse(localStorage.getItem('notification'));
-    if (notification) {
-      setNotifications(notification);
-    }
-  };
-  // const triggervideoCall = (patientid) => {
-
-
-  // }
-  const handleNotificationButtonClick = (patientid) => {
-    console.log(patientid)
-
-    console.log('Notification button clicked');
-    if (patientid) {
-      navigate(`/room/${patientid}`);    }
-    else {
-      setShowPaymentPopup(true);
-      console.log()
-    }
-  };
-
-
-  const handlePaymentSuccess = (paymentMethod) => {
-    console.log('Payment successful!', paymentMethod);
-    // history.push('/success-page');
-  };
-
-  const handlePaymentFailure = (errorMessage) => {
-    console.error('Payment failed:', errorMessage);
-    // history.push('/failure-page');
-  };
-  // const sendPayment = async () => {
-  //   setShowPaymentPopup(true);
-
-  // }
-  const handleNotificationClose = (notificationId) => {
-    // Send notification to docdashboard
-    const notificationData = {
-      message: "user declined request"
-    };
-    sendNotificationToDocDashboard(notificationData);
-
-    // Close the notification locally
-    setNotifications(prevNotifications => prevNotifications.filter(notifications => notifications._id !== notificationId));
-
-    // Clear the notification from localStorage
-    const notificationsInStorage = JSON.parse(localStorage.getItem('notifications'));
-    if (notificationsInStorage) {
-      const updatedNotifications = notificationsInStorage.filter(notifications => notifications._id !== notificationId);
-      localStorage.setItem('notifications', JSON.stringify(updatedNotifications));
-    }
-  };
-
-  const sendNotificationToDocDashboard = (notificationData) => {
-    localStorage.setItem('notificationToDocDashboard', JSON.stringify(notificationData));
-  };
+  // const stripePromise = loadStripe('YOUR_STRIPE_KEY', { stripeAccount: 'YOUR_ACCOUNT_ID' });
+  const [userDetails, setUser] = useState('');
+  const [fmembers, setFmembers] = useState([]);
 
   useEffect(() => {
     // Fetch tickets from the server
@@ -117,7 +51,40 @@ function Userdashboard() {
       }
     };
     fetchTickets();
+
+
+    console.log(yourId);
+    const fetchUser = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3002/user`, {
+          params: { _id: yourId }
+        });
+        setUser(response.data.user);
+        console.log(response.data.user);
+        console.log(userDetails);
+        setFmembers(response.data.user.fmembers)
+      } catch (error) {
+        console.error('Error fetching tickets:', error);
+      }
+    };
+    fetchUser();
+
+    // Listen for changes to local storage
+    window.addEventListener('storage', handleStorageChange);
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
+
+
   }, [yourId]);
+
+  const handleStorageChange = () => {
+    // Retrieve and update notifications from local storage
+    const notification = JSON.parse(localStorage.getItem('notification'));
+    if (notification) {
+      setNotifications(notification);
+    }
+  };
 
   const cancelAppointment = async (ticketId) => {
     console.log(yourId);
@@ -140,6 +107,12 @@ function Userdashboard() {
   const handleViewprofile = async () => {
     setViewProfile(true)
   }
+
+  const handleViewSingleprofile = async (Id) => {
+    console.log('single profile view')
+    console.log(Id)
+  }
+
   const handleCloseProfileView = async () => {
     setViewProfile(false)
   }
@@ -176,95 +149,74 @@ function Userdashboard() {
 
   return (
     <>
-      <div style={{
-        paddingTop: '9px',
-        color: 'white'
-      }}
-      >
-        {/* <div className="notification-container">
-          {notifications.length > 0 && (
-            <div className="notification">
-              <h2>Notifications:</h2>
-              <ul>
-                {notifications.map((notification, index) => (
-                  <li key={index}>
-                    <p>User ID: {notification.userId}</p>
-                    <p>Ticket ID: {notification.ticketId}</p>
-                    <p>Doc Id : {notification.dId}</p>
-                    <p>Closing Remarks: {notification.closingRemarks}</p>
-                    <p>Prescription: {notification.prescription}</p>
-                    <button onClick={() => handleNotificationClose(notification._id)}>Close</button>
-                    <button onClick={sendPayment}>Sent Payment and View Prescription</button>
-                    {showPaymentPopup && (
-                      <Elements stripe={stripePromise}>
-                        <PaymentPopup onClose={() => setShowPaymentPopup(false)} />
-                      </Elements>
-                    )}
-                  </li>
-                ))}
-              </ul>
+      <div className='flex justify-center items-center' style={{ flexDirection: 'column' }}>
+        <div className='flex'>
+          <span className='text-black font-bold text-4xl '>Welcome {name}</span>
+          <button className=' border-2 bg-transparent rounded-3xl px-8 font-bold text-black flex items-center' onClick={handleViewprofile} > {name}</button>
+        </div>
+
+      </div>
+
+      <div className=" bg-[#bd4c4c] flex justify-between ">
+
+        <div className=' w-[65%]'>
+
+          <div className="w-full m-[30px] border-4 rounded-2xl border-[#68834E] p-6 bg-white ">
+            <div className='justify-between flex'>
+              <span className='font-bold text-3xl'>Family Members</span>
+              <button onClick={handleAddFamilyMember} className=' bg-[#68834E] rounded-md px-8 font-bold text-white flex h-8 items-center'>Add Family Member <BsPersonFillAdd /> </button>
             </div>
-          )}
-        </div> */}
-        <div style={{color:'black'}} className={`notification-container ${notifications ? 'show' : ''}`}>
-          {notifications && (
-            <div className="notification">
-              <button className='closenoti' onClick={() => setNotifications(null)}>Clear</button>
-              <b>Notification Bar</b>
-              <p>{notifications.message}</p>
-              {/* <p>User ID: {notifications.userId}</p> */}
-              {/* <p>Closing Remarks: {notifications.closingRemarks}</p> */}
-              {/* <p>Prescription: {notifications.prescription}</p> */}
-              {/* <p>{notifications.patientid}</p> */}
-              {notifications.buttonLabel && (
-                <button onClick={() => handleNotificationButtonClick(notifications.patientid)}>{notifications.buttonLabel}</button>
-              )}
-              {showPaymentPopup && (
-                <Elements stripe={stripePromise}>
-                  <PaymentPopup onSuccess={handlePaymentSuccess} onFailure={handlePaymentFailure} onClose={() => setShowPaymentPopup(false)} />
-                </Elements>
-              )}
+
+            {fmembers.length > 0 ? (
+              fmembers.map(member => (
+                <div key={member._id} className="bg-white justify-between h-12 items-center flex border-4 rounded-lg border-[#68834E] mt-2">
+                  <div className='ml-[5px] font-bold ' >
+                    {member.name}
+                  </div>
+                  <div className='mr-[5px]'>
+                    <button className=' rounded-lg  h-8 px-8 font-bold text-white bg-[#68834E] ' onClick={() => handleViewSingleprofile(member._id)}>View Details</button>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <strong className='text-white font-bold text-2xl '>No appointments available</strong>
+            )}
+          </div>
+          <div className="w-full m-[30px] border-4 rounded-2xl border-[#68834E] p-6 bg-white ">
+            <div className='justify-between flex'>
+              <span className='font-bold text-3xl'>Appointments</span>
+              <button onClick={handleNewAppointment} className=' bg-[#68834E] rounded-md px-8 font-bold text-white flex h-8 items-center'>Add Appointment <VscNewFile /> </button>
             </div>
-          )}
-        </div>
 
-      </div>
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
-        <h1 style={{ marginBottom: '10px', marginTop: "0" }}>Welcome {name}!</h1>
-        <div style={{ position: 'absolute', top: '10px', right: '10px' }}>
+            {tickets.length > 0 ? (
+              tickets.map(ticket => (
+                <div key={ticket._id} className="bg-white justify-between h-12 items-center flex border-4 rounded-lg border-[#68834E] mt-2">
+                  <div className='ml-[5px] font-bold ' >
+                    {ticket.member} - {ticket.doctor} : {ticket.remarks}
+                  </div>
+                  <div className='mr-[5px]'>
+                    <button className='mr-4 rounded-lg  h-8 px-8 font-bold text-white bg-[#68834E] ' onClick={() => cancelAppointment(ticket._id)}>View Profile</button>
 
-        </div>
-      </div>
+                    <button className='border-2 rounded-lg  h-8 px-8 font-bold text-[#68834E]  border-[#68834E]' onClick={() => cancelAppointment(ticket._id)}>Cancel</button>
 
-      <div className="main-content">
-        <div className="appointment-list">
-          {tickets.length > 0 ? (
-            tickets.map(ticket => (
-              <div key={ticket._id} className="ticket-item">
-                <div style={{ marginLeft: '5px' }}>
-                  {ticket.member} - {ticket.doctor} : {ticket.remarks}
+                  </div>
                 </div>
-                <div style={{ marginRight: '5px' }}>
-                  <button className='btn-common' onClick={() => cancelAppointment(ticket._id)}>Cancel Appointment <MdCancel /></button>
+              ))
+            ) : (
+              <strong className='text-white font-bold text-2xl '>No appointments available</strong>
+            )}
+          </div>
 
-                </div>
-              </div>
-            ))
-          ) : (
-            <strong>No appointments available</strong>
-          )}
         </div>
 
-        <div className="sidebar">
+        <div className="w-[32%] border-4 border-[#68834E] rounded-2xl bg-white">
+          <span className='font-bold text-3xl m-10'>Messages</span>
+          <button className='border-2 bg-transparent rounded-md px-8 font-bold text-white' onClick={handleLogout}><RiLogoutCircleRLine /> Logout  </button>
 
-          <button onClick={handleAddFamilyMember} className='btn-common'>Add Family Member <BsPersonFillAdd /> </button>
-          <button className='btn-common' onClick={handleViewprofile} style={{ marginRight: '10px' }}><CgProfile /> My Profile</button>
-          <button className='btn-common' onClick={handleLogout}><RiLogoutCircleRLine /> Logout  </button>
-          <button style={{ marginTop: '10px' }} onClick={handleNewAppointment} className='btn-common'>New Appointment <VscNewFile /> </button>
         </div>
       </div>
 
-      <Map />
+      {/* <Map /> */}
       {showPopup && <NewAppointmentPopup userId={yourId} onClose={handleCloseModal} />}
       {showPopupAF && <AddFamilyMember userId={yourId} onClose={handleCloseModalAddFamily} />}
       {viewProfile && <ProfileView userId={yourId} onClose={handleCloseProfileView} />}

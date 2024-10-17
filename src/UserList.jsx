@@ -3,7 +3,7 @@ import axios from 'axios';
 import AddUserModal from './AddUserModal';
 import './buttoncomm.css';
 import { IoPersonRemoveSharp } from "react-icons/io5";
-import './UserList.css'
+// import './UserList.css'
 // require('dotenv').config();
 
 function UserList() {

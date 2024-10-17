@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 // require('dotenv').config();
+
 
 function ProfileView({ userId, onClose }) {
     const [userDetails, setUser] = useState('');
@@ -34,7 +35,8 @@ function ProfileView({ userId, onClose }) {
                 Your Age : {userDetails.age}  <br />
                 Your Gender : {userDetails.gender}  <br />
                 Your Email : {userDetails.email}  <br />
-                {/* Your Password : {userDetails.password} <br /> */}
+                Your Current Password : <input type="password" name="" value={userDetails.password} id="" className='border-2 rounded-md w-fit h-8'/> <button>view</button>
+                <br />
                 Total Family Members in Your Family : {fmembers.length}  <br />
                  Detailed View : {fmembers.map(member=> member.name + ', ')}
                 <br />

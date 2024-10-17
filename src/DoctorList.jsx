@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import AddDoctorModal from './AddDoctorModal';
-import './DoctorList.css'
+// import './DoctorList.css'
 // require('dotenv').config();
 
 function DoctorList() {
