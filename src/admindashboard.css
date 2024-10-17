@@ -1,12 +1,4 @@
-.adminheader {
-    display: flex;
-    font-size: xxx-large;
-    align-items: center;
-    background-color: #2EAF7D;
-    color: white;
-}
 
-/* Add animation */
 @keyframes cardAnimation {
     0% {
         transform: scale(1);
@@ -22,7 +14,6 @@
 }
 
 
-/* Add content style */
 .common-box .content {
     padding: 20px;
 }

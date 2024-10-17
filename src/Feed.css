@@ -49,7 +49,7 @@
   box-shadow: 0 5px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.3s cubic-bezier(0.23, -0.37, 0.24, 0.94);
   margin-left: 89%;
-    padding: 6px 48px;
+  padding: 6px 48px;
 }
 
 .feed-btn:hover {

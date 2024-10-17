@@ -56,7 +56,7 @@ function DoctorList() {
     return (
         <div>
             <strong>List Of Doctors</strong>
-            <button className='doclist-btn' onClick={toggleModal}>Add Doctor</button>
+            <button className='border-2 inline-block rounded ml-[90%] p-[6px] px-[48px] font-bold' onClick={toggleModal}>Add Doctor</button>
             {showModal && (
                 <AddDoctorModal
                     onSave={handleAddDoctor}
@@ -64,21 +64,16 @@ function DoctorList() {
                 />
             )}
             {doctors.map((doctor) => (
-                <div key={doctor._id} style={{
-                    marginTop: '5px',
-                    marginRight: '10px',
-                    marginLeft: '10px',
-                    backgroundColor: 'gainsboro',
-                    display: 'flex',
-                    borderRadius: '5px',
+                <div key={doctor._id} className="bg-slate-500 mt-[5px] mr-[10px]  ml-[10px] flex justify-between h-[50px] border rounded-3xl" style={{
+
                     alignItems: 'center',
-                    justifyContent: 'space-between',
-                    height: '35px'
+
                 }}>
-                    <div style={{ marginLeft: '10px' }}>
-                        <img src={doctor.image} alt={doctor.name} style={{ width: '30px', height: '30px', borderRadius: '50%' }} />
-                        <span>{doctor.name}</span></div>
-                    <div style={{ marginRight: '10px' }}> <button className='btn-common' onClick={() => handleRemoveDoctor(doctor._id)}>Remove</button></div>
+                    <div className='ml-[10px]'>
+                        <img src={doctor.image} alt={doctor.name} className='w-[30px] h-[30px] rounded-lg' />
+                        <span className='text-white'>{doctor.name}</span></div>
+                    <div className='mr-[10px]'> 
+                        <button className='border-2 bg-transparent rounded-md px-8 font-bold text-white'  onClick={() => handleRemoveDoctor(doctor._id)}>Remove</button></div>
                 </div>
             ))}
         </div>

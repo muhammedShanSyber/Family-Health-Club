@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import AddUserModal from './AddUserModal';
 import './buttoncomm.css';
@@ -58,7 +58,7 @@ function UserList() {
     return (
         <div>
             <strong> List Of Users</strong>
-            <button className='userlist-btn' onClick={toggleModal}>Add User</button>
+            <button className='border-2 inline-block rounded ml-[90%] p-[6px] px-[40px] font-bold' onClick={toggleModal}>Add User</button>
             {showModal && (
                 <AddUserModal
                     onSave={handleAddUser}
@@ -66,23 +66,17 @@ function UserList() {
                 />
             )}
             {users.map((user) => (
-                <div key={user._id} style={{
-                    marginTop:'5px',
-                    marginRight: '10px',
-                    marginLeft:'10px',
-                    backgroundColor: 'gainsboro',
-                    display: 'flex',
-                    borderRadius:'5px',
+                <div key={user._id} className='bg-slate-500 mt-[5px] mr-[10px]  ml-[10px] flex justify-between h-[50px] border rounded-lg' style={{
                     alignItems: 'center',
-                    justifyContent:'space-between',
-                    height: '30px'
-                    
                 }}>
-                    <div style={{marginLeft:'10px'}}> <span>{user.name}</span></div>
-                    <div style={{marginRight:'10px'}}><button className='btn-common' onClick={() => { console.log(user._id); handleRemoveUser(user._id); }}><IoPersonRemoveSharp /> Remove
-                    </button></div>
-                   
-                    
+                    <div className='ml-[10px]'>
+                        <span className='text-white font-bold'>{user.name}</span>
+                    </div>
+                    <div className='mr-[10px]'>
+                        <button className='border-2 bg-transparent rounded-md px-8 font-bold text-white' onClick={() => { console.log(user._id); handleRemoveUser(user._id); }}><IoPersonRemoveSharp /> Remove</button>
+                    </div>
+
+
                 </div>
             ))}
         </div>
